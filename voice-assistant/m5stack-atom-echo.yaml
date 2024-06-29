@@ -1,9 +1,13 @@
 ---
+substitutions:
+  name: "m5stack-atom-echo-X"
+  friendly_name: M5Stack Atom Echo X
+
 esphome:
-  name: m5stack-atom-echo
-  friendly_name: M5Stack Atom Echo
+  name: ${name}
+  friendly_name: ${friendly_name}
   min_version: 2024.6.0
-  name_add_mac_suffix: true
+  name_add_mac_suffix: false
   project:
     name: m5stack.atom-echo-voice-assistant
     version: "1.0"
@@ -14,11 +18,15 @@ esp32:
     type: esp-idf
 
 logger:
+
 api:
+  encryption:
+    key: !secret api_key
 
 ota:
   - platform: esphome
     id: ota_esphome
+    password: !secret ota_password
 
 dashboard_import:
   package_import_url: github://esphome/firmware/voice-assistant/m5stack-atom-echo.yaml@main
