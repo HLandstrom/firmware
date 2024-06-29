@@ -1,7 +1,7 @@
 ---
 substitutions:
-  name: esp32-s3-box-3
-  friendly_name: ESP32 S3 Box 3
+  name: s3-box-va
+  friendly_name: S3 Box VA
   loading_illustration_file: https://github.com/esphome/firmware/raw/main/voice-assistant/casita/loading_320_240.png
   idle_illustration_file: https://github.com/esphome/firmware/raw/main/voice-assistant/casita/idle_320_240.png
   listening_illustration_file: https://github.com/esphome/firmware/raw/main/voice-assistant/casita/listening_320_240.png
@@ -35,7 +35,7 @@ esphome:
   name: ${name}
   friendly_name: ${friendly_name}
   min_version: 2024.6.0
-  name_add_mac_suffix: true
+  name_add_mac_suffix: false
   platformio_options:
     board_build.flash_mode: dio
   project:
@@ -82,6 +82,8 @@ external_components:
     refresh: 0s
 
 api:
+  encryption:
+    key: !secret api_key
   on_client_connected:
     - script.execute: draw_display
   on_client_disconnected:
@@ -90,6 +92,7 @@ api:
 ota:
   - platform: esphome
     id: ota_esphome
+    password: !secret ota_password
 
 logger:
   hardware_uart: USB_SERIAL_JTAG
@@ -98,6 +101,8 @@ dashboard_import:
   package_import_url: github://esphome/firmware/wake-word-voice-assistant/esp32-s3-box-3.yaml@main
 
 wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
   ap:
   on_connect:
     - script.execute: draw_display
@@ -220,7 +225,7 @@ voice_assistant:
           and:
             - switch.is_off: mute
             - lambda: return id(wake_word_engine_location).state == "On device";
-            - lambda: return id(voice_assistant_phase) != ${voice_assist_timer_finished_phase_id};
+            # - lambda: return id(voice_assistant_phase) != ${voice_assist_timer_finished_phase_id};
         then:
           - wait_until:
               not:
