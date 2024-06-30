@@ -1,0 +1,11 @@
+---
+substitutions:
+  name: "m5stack-atom-echo-X"
+  friendly_name: M5Stack Atom Echo X
+  wifi_ssid: !secret wifi_ssid
+  wifi_password: !secret wifi_password
+  api_key: !secret api_key
+  ota_password: !secret ota_password
+
+packages:
+  remote_package: github://HLandstrom/firmware/wake-word-voice-assistant/esp32-s3-box-3.yaml

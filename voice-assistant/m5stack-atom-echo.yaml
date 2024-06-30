@@ -1,8 +1,4 @@
 ---
-substitutions:
-  name: "m5stack-atom-echo-X"
-  friendly_name: M5Stack Atom Echo X
-
 esphome:
   name: ${name}
   friendly_name: ${friendly_name}
@@ -21,17 +17,19 @@ logger:
 
 api:
   encryption:
-    key: !secret api_key
+    key: ${api_key}
 
 ota:
   - platform: esphome
     id: ota_esphome
-    password: !secret ota_password
+    password: ${ota_password}
 
 dashboard_import:
   package_import_url: github://esphome/firmware/voice-assistant/m5stack-atom-echo.yaml@main
 
 wifi:
+  ssid: ${wifi_ssid}
+  password: ${wifi_password}
   on_connect:
     - delay: 5s  # Gives time for improv results to be transmitted
     - ble.disable:
