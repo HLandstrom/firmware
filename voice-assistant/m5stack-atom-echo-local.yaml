@@ -8,4 +8,4 @@ substitutions:
   ota_password: !secret ota_password
 
 packages:
-  remote_package: github://HLandstrom/firmware/wake-word-voice-assistant/esp32-s3-box-3.yaml
+  remote_package: github://HLandstrom/firmware/voice-assistant/m5stack-atom-echo.yaml@main
