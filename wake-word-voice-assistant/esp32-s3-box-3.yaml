@@ -193,7 +193,6 @@ voice_assistant:
   id: va
   microphone: box_mic
   speaker: box_speaker
-  #use_wake_word: true
   noise_suppression_level: 3
   auto_gain: 31dBFS
   volume_multiplier: 3.0
