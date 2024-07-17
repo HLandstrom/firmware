@@ -8,4 +8,8 @@ substitutions:
   ota_password: !secret ota_password
 
 packages:
-  remote_package: github://HLandstrom/firmware/voice-assistant/m5stack-atom-echo.yaml@main
+  remote_package:
+    url: https://github.com/HLandstrom/firmware/
+    ref: main
+    file: voice-assistant/m5stack-atom-echo.yaml.yaml
+    refresh: 0s
