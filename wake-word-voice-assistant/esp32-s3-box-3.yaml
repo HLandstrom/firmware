@@ -184,10 +184,13 @@ speaker:
     id: box_speaker
 
 micro_wake_word:
-  model: ${micro_wake_word_model}
+  vad:
+  models:
+    - model: ${micro_wake_word_model}
   on_wake_word_detected:
-    - voice_assistant.start:
-        wake_word: !lambda return wake_word;
+    then:
+      - voice_assistant.start:
+          wake_word: !lambda return wake_word;
 
 voice_assistant:
   id: va

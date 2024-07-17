@@ -11,4 +11,15 @@ substitutions:
   ota_password: !secret ota_password
 
 packages:
-  remote_package: github://HLandstrom/firmware/wake-word-voice-assistant/esp32-s3-box-3.yaml
+  remote_package:
+    url: https://github.com/HLandstrom/firmware/
+    ref: main
+    file: wake-word-voice-assistant/esp32-s3-box-3.yaml
+    refresh: 0s
+
+# external_components:
+#   - source:
+#       type: git
+#       url: github://HLandstrom/firmware/wake-word-voice-assistant/esp32-s3-box-3.yaml
+#       ref: main
+#       refresh: 360s
