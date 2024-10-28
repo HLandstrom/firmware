@@ -1,0 +1,25 @@
+---
+substitutions:
+  name: s3-box-va
+  friendly_name: S3 Box VA
+
+  micro_wake_word_model: okay_nabu
+
+  wifi_ssid: !secret wifi_ssid
+  wifi_password: !secret wifi_password
+  api_key: !secret api_key
+  ota_password: !secret ota_password
+
+packages:
+  remote_package:
+    url: https://github.com/HLandstrom/firmware/
+    ref: main
+    file: wake-word-voice-assistant/esp32-s3-box-3.yaml
+    refresh: 0s
+
+# external_components:
+#   - source:
+#       type: git
+#       url: github://HLandstrom/firmware/wake-word-voice-assistant/esp32-s3-box-3.yaml
+#       ref: main
+#       refresh: 360s
